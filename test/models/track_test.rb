@@ -1,26 +1,44 @@
 require 'test_helper'
 
 class TrackTest < ActiveSupport::TestCase
-  test "tracks can't save without fields" do
+  test "tracks can't save without name" do
     track = Track.new
     assert_not track.save
   end
 
-  test 'tracks can associate with site' do
+  test "tracks can't save without site id" do
     track = Track.new
-    track.site = sites(:soundcloud)
-    assert track.save
+    assert_not track.save
   end
 
-  test 'track can associate with user' do
+  test "tracks can't save without user id" do
     track = Track.new
-    track.user = users(:colin)
-    assert track.save
+    assert_not track.save
+  end
+
+  test "tracks can't save without url" do
+    track = Track.new
+    assert_not track.save
   end
 
   test 'track must have valid url' do
     track = Track.new
     track.url = '9da7s9dhiasdia'
     assert_not track.save
+  end
+
+  test 'tracks can belong to site' do
+    track = tracks(:valid_track)
+    assert_equal site(:valid_site), track.site
+  end
+
+  test 'track can belong to user' do
+    track = tracks(:valid_track)
+    assert_equal site(:valid_user), track.user
+  end
+
+  test 'track can have many playlists' do
+    track = tracks(:valid_track)
+    assert_equal 3, track.playlists.count
   end
 end
