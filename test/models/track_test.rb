@@ -29,12 +29,12 @@ class TrackTest < ActiveSupport::TestCase
 
   test 'tracks can belong to site' do
     track = tracks(:valid_track)
-    assert_equal site(:valid_site), track.site
+    assert_equal sites(:valid_site), track.site
   end
 
   test 'track can belong to user' do
     track = tracks(:valid_track)
-    assert_equal site(:valid_user), track.user
+    assert_equal users(:valid_user), track.user
   end
 
   test 'track can have many playlists' do
