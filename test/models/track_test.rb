@@ -2,28 +2,27 @@ require 'test_helper'
 
 class TrackTest < ActiveSupport::TestCase
   test "tracks can't save without name" do
-    track = Track.new
+    track = Track.new(site: sites(:valid_site), user: users(:valid_user), url: 'https://soundcloud.com')
     assert_not track.save
   end
 
   test "tracks can't save without site id" do
-    track = Track.new
+    track = Track.new(user: users(:valid_user), url: 'https://soundcloud.com', name: 'Track 1')
     assert_not track.save
   end
 
   test "tracks can't save without user id" do
-    track = Track.new
+    track = Track.new(site: sites(:valid_site), url: 'https://soundcloud.com', name: 'Track 1')
     assert_not track.save
   end
 
   test "tracks can't save without url" do
-    track = Track.new
+    track = Track.new(site: sites(:valid_site), user: users(:valid_user), name: 'Track 1')
     assert_not track.save
   end
 
   test 'track must have valid url' do
-    track = Track.new
-    track.url = 'https://soundcloud.com'
+    track = Track.new(site: sites(:valid_site), user: users(:valid_user), url: 'https://mysterysite.com', name: 'Track 1')
     assert_not track.save
   end
 
