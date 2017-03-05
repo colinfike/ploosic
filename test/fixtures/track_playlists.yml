@@ -4,8 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+valid_track_playlist_1:
+  track: valid_track
+  playlist: valid_playlist
+
+valid_track_playlist_2:
+  track: valid_track
+  playlist: valid_playlist
+
+valid_track_playlist_3:
+  track: valid_track
+  playlist: valid_playlist
