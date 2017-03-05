@@ -23,7 +23,7 @@ class TrackTest < ActiveSupport::TestCase
 
   test 'track must have valid url' do
     track = Track.new
-    track.url = '9da7s9dhiasdia'
+    track.url = 'https://soundcloud.com'
     assert_not track.save
   end
 
