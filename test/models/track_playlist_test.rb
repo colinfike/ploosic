@@ -12,12 +12,12 @@ class TrackPlaylistTest < ActiveSupport::TestCase
   end
 
   test "track_playlist can belong to track" do
-    track_playlist = track_playlists(:valid_track_playlist)
+    track_playlist = track_playlists(:valid_track_playlist_1)
     assert_equal tracks(:valid_track), track_playlist.track
   end
 
   test "track_playlist can belong to playlist" do
-    track_playlist = track_playlists(:valid_track_playlist)
+    track_playlist = track_playlists(:valid_track_playlist_1)
     assert_equal playlists(:valid_playlist), track_playlist.playlist
   end
 end
