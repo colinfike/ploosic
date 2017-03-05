@@ -5,4 +5,4 @@
 # below each fixture, per the syntax in the comments below
 #
 valid_playlist:
-  created_at: <%= Time.zone.today %>
+  user: valid_user

@@ -7,7 +7,7 @@ class SiteTest < ActiveSupport::TestCase
   end
 
   test "site can have many tracks" do
-    site = sites(:has_tracks)
-    assert_equal(2, site.tracks.count)
+    site = sites(:valid_site)
+    assert_equal(1, site.tracks.count)
   end
 end

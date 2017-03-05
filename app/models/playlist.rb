@@ -3,5 +3,5 @@ class Playlist < ApplicationRecord
   has_many :track_playlists
   has_many :tracks, through: :track_playlists
 
-  validate :user, :presence
+  validates :user, presence: true
 end
