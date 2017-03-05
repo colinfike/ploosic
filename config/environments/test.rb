@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Since secrets.yml is not committed to the repo, Travis CI fails.
+  # This fixes that for the rest environment
+  config.secret_token = SecureRandom.hex(64)
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
