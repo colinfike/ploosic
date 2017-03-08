@@ -5,7 +5,19 @@
 # below each fixture, per the syntax in the comments below
 #
 valid_track:
-  name: 'Valid Track'
-  url: 'https://soundcloud.com'
+  name: 'Blind By Light'
+  url: 'https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy'
   user: valid_user
-  site: valid_site
+  site: soundcloud
+
+valid_track_two:
+  name: 'Valid Track'
+  url: 'https://soundcloud.com/moeshop/love-taste'
+  user: valid_user
+  site: soundcloud
+
+valid_track_three:
+  name: 'Valid Track'
+  url: 'https://soundcloud.com/futuresocietycollective/moe-shop-owarini-tokyo-liveshow'
+  user: valid_user
+  site: soundcloud

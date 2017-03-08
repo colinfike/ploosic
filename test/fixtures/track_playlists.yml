@@ -9,9 +9,9 @@ valid_track_playlist_1:
   playlist: valid_playlist
 
 valid_track_playlist_2:
-  track: valid_track
+  track: valid_track_two
   playlist: valid_playlist
 
 valid_track_playlist_3:
-  track: valid_track
+  track: valid_track_three
   playlist: valid_playlist

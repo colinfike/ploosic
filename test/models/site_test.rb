@@ -7,7 +7,7 @@ class SiteTest < ActiveSupport::TestCase
   end
 
   test "site can have many tracks" do
-    site = sites(:valid_site)
-    assert_equal(1, site.tracks.count)
+    site = sites(:soundcloud)
+    assert_equal(3, site.tracks.count)
   end
 end
