@@ -9,3 +9,4 @@
 
 Site.create(name: 'SoundCloud')
 Site.create(name: 'YouTube')
+User.create
