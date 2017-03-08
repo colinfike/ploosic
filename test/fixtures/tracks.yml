@@ -11,13 +11,13 @@ valid_track:
   site: soundcloud
 
 valid_track_two:
-  name: 'Valid Track'
+  name: 'Love Taste'
   url: 'https://soundcloud.com/moeshop/love-taste'
   user: valid_user
   site: soundcloud
 
 valid_track_three:
-  name: 'Valid Track'
+  name: 'Moe Shop Owarini'
   url: 'https://soundcloud.com/futuresocietycollective/moe-shop-owarini-tokyo-liveshow'
   user: valid_user
   site: soundcloud
