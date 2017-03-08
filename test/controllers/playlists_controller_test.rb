@@ -7,15 +7,17 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show page" do
-    get playlists_url(@playlist)
+    get playlist_url(@playlist)
     assert_response :success
   end
 
   test "show page should show tracks" do
-    get playlists_url(@playlist)
+    get playlist_url(@playlist)
 
-    assert_select 'track' do
-      assert_select 'track__title', @playlist.tracks.first
+    @playlist.tracks.each do |track|
+      assert_select '.track' do
+        assert_select '.track__name', track.name
+      end
     end
   end
 end
