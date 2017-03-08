@@ -14,3 +14,4 @@ admin = User.create(username: 'SuperUser')
 
 track = Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
 sample_playlist = Playlist.create(user: admin)
+sample_playlist.tracks << track
