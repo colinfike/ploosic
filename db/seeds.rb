@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Site.create(name: 'SoundCloud')
-Site.create(name: 'YouTube')
-User.create
+soundcloud = Site.create(name: 'SoundCloud')
+youtube = Site.create(name: 'YouTube')
+
+admin = User.create(username: 'SuperUser')
+
+track = Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+sample_playlist = Playlist.create(user: admin)

@@ -7,17 +7,14 @@
 valid_track:
   name: 'Blind By Light'
   url: 'https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy'
-  user: valid_user
   site: soundcloud
 
 valid_track_two:
   name: 'Love Taste'
   url: 'https://soundcloud.com/moeshop/love-taste'
-  user: valid_user
   site: soundcloud
 
 valid_track_three:
   name: 'Moe Shop Owarini'
   url: 'https://soundcloud.com/futuresocietycollective/moe-shop-owarini-tokyo-liveshow'
-  user: valid_user
   site: soundcloud
