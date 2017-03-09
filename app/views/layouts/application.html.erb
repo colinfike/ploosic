@@ -3,8 +3,11 @@
   <head>
     <title>Ploosic</title>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'https://w.soundcloud.com/player/api.js' %>
+    
+    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/picnicss/6.3.2/picnic.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'https://w.soundcloud.com/player/api.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 

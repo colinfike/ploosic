@@ -6,6 +6,10 @@
 $ ->
   window.PlayerController = {}
 
+  PlayerController.playlist = (->
+    # Read rails data to generate playlist
+  )()
+  
   PlayerController.soundcloudPlayer = (->
     # Init soundcloud widget
     soundcloudWidget = SC.Widget('soundcloud-player')
