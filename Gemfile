@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 
+gem 'rubocop'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 gem 'mysql2'
@@ -37,6 +39,15 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  # Testing these gems
+  gem 'better_errors'
+  # gem 'jazz_hands'
+  gem 'pry'
+  gem 'awesome_print'
+  gem 'bullet'
+  gem 'guard'
+  gem 'factory_girl'
 end
 
 group :development do
