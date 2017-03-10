@@ -4,4 +4,12 @@ module PlaylistsHelper
       content_tag :span, track.name, class: 'track__name'
     end
   end
+
+  def render_data_div(tracks)
+    track_json = []
+    tracks.each do |track|
+      track_json << track.as_json
+    end
+    content_tag :div, nil, class: 'none', id: 'playlist-data', data: { playlist: track_json }
+  end
 end
