@@ -14,11 +14,15 @@ $ ->
 
     # Soundcloud Player
     soundcloudPlayer = (->
-      # Init soundcloud widget
+      # Init soundcloud widget.
+      # TODO: In future load playlist of songs at initialization if possible
       soundcloudWidget = SC.Widget('soundcloud-player')
 
       playSong: (track) ->
         soundcloudWidget.load track.url, auto_play: true
+
+      stop: ->
+        soundcloudWidget.pause()
 
       testInit: ->
         console.log soundcloudWidget
@@ -33,6 +37,9 @@ $ ->
         track = playlist[currentTrack]
         currentPlayer = if track.site_id == 1 then soundcloudPlayer else youtubePlayer
         currentPlayer.playSong track
+
+      stop: ->
+        currentPlayer.stop()
 
       # More for testing purposes
       printPlaylist: ->
