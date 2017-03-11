@@ -3,8 +3,9 @@
   <head>
     <title>Ploosic</title>
     <%= csrf_meta_tags %>
-    
+
     <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/picnicss/6.3.2/picnic.min.css' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Black+Ops+One' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'https://w.soundcloud.com/player/api.js' %>
@@ -12,6 +13,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <%= yield :content %>
   </body>
 </html>

@@ -5,4 +5,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
+
+  test "header should exist" do
+    get root_url
+    assert_select '.header'
+  end
 end

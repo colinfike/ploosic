@@ -46,6 +46,4 @@ $ ->
         console.log playlist
         console.log currentPlayer
     )()
-
-
   )()
