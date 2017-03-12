@@ -9,7 +9,7 @@ end
 gem 'rubocop'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0.2'
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -42,12 +42,12 @@ group :development, :test do
 
   # Testing these gems
   gem 'better_errors'
-  # gem 'jazz_hands'
   gem 'pry'
   gem 'awesome_print'
   gem 'bullet'
   gem 'guard'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
