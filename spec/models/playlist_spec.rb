@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, 'playlist attribute testing' do
   it "playlist can't save without a user" do
-    playlist = Playlist.new
+    playlist = build(:playlist, user: nil)
 
     result = playlist.save
 
