@@ -1,12 +1,11 @@
 require 'test_helper'
-
+# CONVERTED
 class TrackPlaylistTest < ActiveSupport::TestCase
-
   test "track_playlist can't save without track" do
     track_playlist = TrackPlaylist.new(playlist: playlists(:valid_playlist))
     assert_not track_playlist.save
   end
-  
+
   test "track_playlist can't save without playlist" do
     track_playlist = TrackPlaylist.new(track: tracks(:valid_track))
     assert_not track_playlist.save

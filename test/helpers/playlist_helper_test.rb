@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# Kind of covered by the integration tests
 class PlaylistsHelperTest < ActionView::TestCase
   setup do
     @playlist = playlists(:valid_playlist)

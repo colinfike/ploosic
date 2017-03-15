@@ -1,7 +1,7 @@
 module PlaylistsHelper
   def render_track(track)
     content_tag :div, class: "track" do
-      content_tag :span, track.name, class: 'track__name'
+      content_tag :span, track.name, class: 'track__name', style: 'color: #001A23;'
     end
   end
 

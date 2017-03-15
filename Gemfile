@@ -46,8 +46,14 @@ group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
   gem 'guard'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
   gem 'factory_girl_rails'
+  gem 'spring-commands-rspec'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'terminal-notifier'
+  gem 'capybara'
 end
 
 group :development do

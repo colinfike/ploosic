@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# CONVERTED
 class SiteTest < ActiveSupport::TestCase
   test "site cannot save without name" do
     site = Site.new

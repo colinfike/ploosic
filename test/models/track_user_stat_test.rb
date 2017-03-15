@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# CONVERTED
 class TrackUserStatTest < ActiveSupport::TestCase
   test "track_user_stat can't save without user" do
     track_user_stat = TrackUserStat.new(track: tracks(:valid_track))
