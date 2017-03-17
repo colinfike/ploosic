@@ -40,7 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
-  # Testing these gems
+  # Testing these gems, this section got a bit cramped
   gem 'better_errors'
   gem 'pry'
   gem 'awesome_print'
@@ -55,6 +55,7 @@ group :development, :test do
   gem 'terminal-notifier'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do

@@ -1,30 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Track, 'track attribute tests' do
-  it 'cannot save without a name' do
-    track = build(:track, name: nil)
-    result = track.save
-    expect(result).to be false
+RSpec.describe Track, "validations" do
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:site) }
+  it { is_expected.to validate_presence_of(:url) }
+  it {should_not allow_value('https://mysterysite.com').for(:url)}
+  it do
+    should allow_values('https://youtu.be/44bigiDX6lI',
+     'https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy').
+      for(:url)
   end
+end
 
-  it 'cannot save without a site' do
-    track = build(:track, site: nil)
-    result = track.save
-    expect(result).to be false
-  end
-
-  it 'cannot save without a url' do
-    track = build(:track, url: nil)
-    result = track.save
-    expect(result).to be false
-  end
-
-  it 'cannot save with an invalid url' do
-    track = build(:track, url: 'https://mysterysite.com')
-    result = track.save
-    expect(result).to be false
-  end
-
+RSpec.describe Track, 'obsolete association tests' do
   it 'can belong to a site' do
     track = build(:track)
     expect(track.site).not_to be_nil

@@ -98,3 +98,22 @@ $ ->
         youtubePlayer.setWidget()
     )()
   )()
+
+  # User presses play
+  #   - If there is a paused song in one of the players should play
+  #   - If no song has been played yet, the proper player should be loaded
+  #       and song played
+  #   - If a player has been paused and the song has changed after being paused
+  #       the new song should be loaded into the proper player and song played
+  #
+  # User presses next
+  #   - If there is no song playing, load the next song into the player and await
+  #       the user to press play
+  #   - If there is a song playing, load the next song into the player and
+  #       immediately begin playing said song
+  #
+  # User press previous
+  #   - Same as next, essentially.
+  #
+  # User presses stop
+  #   - If there is a song playing it should be paused
