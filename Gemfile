@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'terminal-notifier'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :development do
