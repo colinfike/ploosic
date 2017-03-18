@@ -124,8 +124,9 @@ $ ->
     )()
   )()
 
-  # TODO: Seeking. Remove playlist from youtube link if present. Previous
-  # will rewind the current track after X seconds
+  # TODO: Song ends, detect event and  go to next song. Seeking. Remove playlist
+  # from youtube link if present. Previous will rewind the current track after
+  # X seconds
 
   # User presses play (Will 'start' or 'resume')
   #   - If there is a paused song in one of the players should play
