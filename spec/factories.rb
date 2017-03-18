@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:username) { |n| "person#{n}" }
+    sequence(:guest_hash) { |n| "hash-#{n}" }
   end
 
   factory :site do

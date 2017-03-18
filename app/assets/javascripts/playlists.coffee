@@ -61,8 +61,8 @@ $ ->
 
       setWidget: ->
         youtubeWidget = new (YT.Player)('youtube-player',
-          height: '200'
-          width: '200'
+          height: '0'
+          width: '0'
           videoId: ''
           events:
             'onReady': onPlayerReady

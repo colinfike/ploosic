@@ -1,4 +1,5 @@
 Rails.application.configure do
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Since secrets.yml is not committed to the repo, Travis CI fails.
