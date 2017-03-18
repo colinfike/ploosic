@@ -35,7 +35,8 @@ $ ->
 
     # Helper functions
     updatePlayer = ->
-      return if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
+      console.log("update Site ID: " + playlist[trackIndex].site_id)
+      currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
 
 
     # Soundcloud Player
@@ -70,18 +71,19 @@ $ ->
         return
 
       start: ->
-        youtubeWidget.loadVideoById playlist[trackIndex].url.substr(track.url.lastIndexOf('/') + 1)
+        youtubeWidget.loadVideoById playlist[trackIndex].url.substr(playlist[trackIndex].url.lastIndexOf('/') + 1)
 
       resume: ->
+        youtubeWidget.playVideo()
 
       pause: ->
-
+        youtubeWidget.pauseVideo()
     )()
 
     # Main public player
     PlayerController.mainPlayer = (->
 
-      currentPlayer = updatePlayer
+      updatePlayer()
 
       play: ->
         songPlaying = true
@@ -110,21 +112,11 @@ $ ->
 
       # If a user wants a certain track to be played
       playTrack: (index) ->
+        index = 0 if (index < 0 || index > 0)
         trackUpdated = true
         trackIndex = index
+        currentPlayer.pause()
         PlayerController.mainPlayer.play()
-
-
-      # More for testing purposes
-      printPlaylist: ->
-        console.log playlist
-        console.log currentPlayer
-
-      printPlayers: ->
-        console.log youtubePlayer
-        console.log youtubePlayer.testInit()
-        console.log soundcloudPlayer
-        console.log soundcloudPlayer.testInit()
 
       initYoutube: ->
         youtubePlayer.setWidget()
@@ -132,6 +124,8 @@ $ ->
     )()
   )()
 
+  # TODO: Seeking. Remove playlist from youtube link if present. Previous
+  # will rewind the current track after X seconds
 
   # User presses play (Will 'start' or 'resume')
   #   - If there is a paused song in one of the players should play
