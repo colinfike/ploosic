@@ -30,6 +30,7 @@ $ ->
   (->
     playlist = $('#playlist-data').data 'playlist'
     currentTrack = 0
+    trackUpdated = false
     currentPlayer = ''
 
     # Soundcloud Player
@@ -72,16 +73,26 @@ $ ->
 
     # Main public player
     PlayerController.mainPlayer = (->
-      currentPlayer: ->
-        currentPlayer
-
+      console.log 'hello'
       play: ->
-        track = playlist[currentTrack]
-        currentPlayer = if track.site_id == 1 then soundcloudPlayer else youtubePlayer
-        currentPlayer.playSong track
+        # start() if song has to be loaded in. resume() if it's already loaded
+        if trackUpdated
+          currentPlayer.start()
+        else
+          currentPlayer.resume()
 
-      stop: ->
-        currentPlayer.stop()
+      pause: ->
+        currentPlayer.pause()
+
+      next: ->
+        currentPlayer.next()
+
+      previous: ->
+        currentPlayer.previous()
+
+      # play: ->
+      #   track = playlist[currentTrack]
+      #   getCurrentPlayer().playSong track
 
       # More for testing purposes
       printPlaylist: ->
@@ -96,10 +107,12 @@ $ ->
 
       initYoutube: ->
         youtubePlayer.setWidget()
+
     )()
   )()
 
-  # User presses play
+
+  # User presses play (Will 'start' or 'resume')
   #   - If there is a paused song in one of the players should play
   #   - If no song has been played yet, the proper player should be loaded
   #       and song played
