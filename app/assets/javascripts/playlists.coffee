@@ -1,11 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-# This module pattern is some pretty clean stuff
+# May have missed the mark a bit with the module pattern but
+# this should be ok for now
 $ ->
 
-  # YouTube API Loading
+  ### BEGIN YOUTUBE API ###
   tag = document.createElement('script')
   tag.src = 'https://www.youtube.com/iframe_api'
   firstScriptTag = document.getElementsByTagName('script')[0]
@@ -23,15 +20,23 @@ $ ->
 
   window.onPlayerStateChange = (event) ->
     console.log 'onPlayerStateChange'
+  ### END YOUTUBE API ###
+
 
 
   window.PlayerController = {}
-
   (->
+    # Player Vars
     playlist = $('#playlist-data').data 'playlist'
-    currentTrack = 0
-    trackUpdated = false
-    currentPlayer = ''
+    trackIndex = 0
+    trackUpdated = true
+    songPlaying = false
+    currentPlayer = null
+
+    # Helper functions
+    updatePlayer = ->
+      return if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
+
 
     # Soundcloud Player
     soundcloudPlayer = (->
@@ -39,14 +44,14 @@ $ ->
       # TODO: In future load playlist of songs at initialization if possible
       soundcloudWidget = SC.Widget('soundcloud-player')
 
-      playSong: (track) ->
-        soundcloudWidget.load track.url, auto_play: true
+      start: ->
+        soundcloudWidget.load playlist[trackIndex].url, auto_play: true
 
-      stop: ->
+      resume: ->
+        soundcloudWidget.play()
+
+      pause: ->
         soundcloudWidget.pause()
-
-      testInit: ->
-        console.log soundcloudWidget
     )()
 
     # YouTube Player
@@ -64,35 +69,51 @@ $ ->
         )
         return
 
-      playSong: (track) ->
-        youtubeWidget.loadVideoById track.url.substr(track.url.lastIndexOf('/') + 1)
+      start: ->
+        youtubeWidget.loadVideoById playlist[trackIndex].url.substr(track.url.lastIndexOf('/') + 1)
 
-      testInit: ->
-        console.log youtubeWidget
+      resume: ->
+
+      pause: ->
+
     )()
 
     # Main public player
     PlayerController.mainPlayer = (->
-      console.log 'hello'
+
+      currentPlayer = updatePlayer
+
       play: ->
-        # start() if song has to be loaded in. resume() if it's already loaded
+        songPlaying = true
+        updatePlayer()
         if trackUpdated
           currentPlayer.start()
+          trackUpdated = false
         else
           currentPlayer.resume()
 
       pause: ->
+        songPlaying = false
         currentPlayer.pause()
 
       next: ->
-        currentPlayer.next()
+        trackUpdated = true
+        trackIndex = if trackIndex == playlist.length - 1 then 0 else trackIndex + 1
+        currentPlayer.pause()
+        PlayerController.mainPlayer.play() if songPlaying
 
       previous: ->
-        currentPlayer.previous()
+        trackUpdated = true
+        trackIndex = if trackIndex == 0 then playlist.length - 1 else trackIndex - 1
+        currentPlayer.pause()
+        PlayerController.mainPlayer.play() if songPlaying
 
-      # play: ->
-      #   track = playlist[currentTrack]
-      #   getCurrentPlayer().playSong track
+      # If a user wants a certain track to be played
+      playTrack: (index) ->
+        trackUpdated = true
+        trackIndex = index
+        PlayerController.mainPlayer.play()
+
 
       # More for testing purposes
       printPlaylist: ->

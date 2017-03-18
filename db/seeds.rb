@@ -12,9 +12,12 @@ youtube = Site.create(name: 'YouTube')
 
 admin = User.create(username: 'SuperUser')
 
-track = Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+tracks = []
 sample_playlist = Playlist.create(user: admin)
-sample_playlist.tracks << track
+tracks << Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+tracks << Track.create(site: soundcloud, name: "Love Taste", url: "https://soundcloud.com/moeshop/love-taste")
+tracks << Track.create(site: soundcloud, name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
+tracks.each{ |track| sample_playlist.tracks << track }
 
 track = Track.create(site: soundcloud, name: "Attack of Green Shirt Uncle", url: "https://youtu.be/44bigiDX6lI")
 sample_playlist = Playlist.create(user: admin)
