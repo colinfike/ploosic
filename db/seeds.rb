@@ -10,7 +10,7 @@
 soundcloud = Site.create(name: 'SoundCloud')
 youtube = Site.create(name: 'YouTube')
 
-admin = User.create(guest_hash: '0xDEADBEEF')
+admin = User.create()
 
 tracks = []
 sample_playlist = Playlist.create(user: admin)

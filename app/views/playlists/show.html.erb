@@ -1,19 +1,11 @@
 <%= content_for :content do %>
   <%= render_data_div(@playlist.tracks) %>
 
-  <% @playlist.tracks.each do |track| %>
-    <%= render_track(track) %>
-  <% end %>
+  <div class='track-container'>
+    <% @playlist.tracks.each do |track| %>
+      <%= render_track(track) %>
+    <% end %>
+  </div>
   <div id="youtube-player"></div>
   <iframe id='soundcloud-player' class='hidden' width="250" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= @url %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-
-  <!-- <script>
-    // Load the youtube widget API. I guess you have to do it like this
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  </script> -->
-
 <% end %>

@@ -12,4 +12,12 @@ module PlaylistsHelper
     end
     content_tag :div, nil, class: 'none', id: 'playlist-data', data: { playlist: track_json }
   end
+
+  def render_playlist_link(user_id)
+    if current_user
+      link_to 'View Playlist', playlist_path(current_user.playlist)
+    else
+      link_to 'Create Playlist', playlists_path, method: :post
+    end
+  end
 end

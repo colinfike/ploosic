@@ -6,7 +6,12 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:guest_hash) { |n| "hash-#{n}" }
+    # Need to update this since every user automatically gets a playlist
+    trait :has_playlist do
+      after(:build) do |user|
+        create(:playlist, :has_tracks, user: user)
+      end
+    end
   end
 
   factory :site do
