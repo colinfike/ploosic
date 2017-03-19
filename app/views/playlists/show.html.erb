@@ -1,6 +1,10 @@
 <%= content_for :content do %>
   <%= render_data_div(@playlist.tracks) %>
 
+  <%= form_tag '/tracks' do %>
+    <%= text_field_tag 'track_url', nil, placeholder: 'Enter Track Url Here' %>
+  <% end %>
+
   <div class='track-container'>
     <% @playlist.tracks.each do |track| %>
       <%= render_track(track) %>
