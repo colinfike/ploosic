@@ -20,4 +20,9 @@ module PlaylistsHelper
       link_to 'Create Playlist', playlists_path, method: :post
     end
   end
+
+  def render_player
+    content_tag :div, class: 'player' do
+    end
+  end
 end

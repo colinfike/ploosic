@@ -12,6 +12,9 @@
       <%= render_track(track) %>
     <% end %>
   </div>
+
+  <%= render_player %>
+  
   <div id="youtube-player"></div>
   <iframe id='soundcloud-player' class='hidden' width="250" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= @url %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 <% end %>
