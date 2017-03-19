@@ -14,5 +14,13 @@ RSpec.feature "user views a playlist", type: :feature do
     playlist = create(:playlist, :has_tracks)
     visit playlist_path(playlist)
     expect(page).to have_css 'div.player'
+
+    # FIXME: Don't want to overload the assertions here but I want to check that all
+    # the buttons are here. Could use a request helper but I just want to
+    # check that the selector is here. Will use this for now.
+    expect(page).to have_css '.player__play'
+    expect(page).to have_css '.player__pause'
+    expect(page).to have_css '.player__next'
+    expect(page).to have_css '.player__previous'
   end
 end

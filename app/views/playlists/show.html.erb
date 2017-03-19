@@ -13,8 +13,14 @@
     <% end %>
   </div>
 
-  <%= render_player %>
-  
+  <!-- TODO: Maybe pull out into partial -->
+  <div class='player'>
+    <span class='player__play'>Play</span>
+    <span class='player__pause'>Pause</span>
+    <span class='player__previous'>Previous</span>
+    <span class='player__next'>Next</span>
+  </div>
+
   <div id="youtube-player"></div>
   <iframe id='soundcloud-player' class='hidden' width="250" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= @url %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 <% end %>
