@@ -19,7 +19,6 @@ RSpec.feature "user views a playlist", type: :feature do
     # the buttons are here. Could use a request helper but I just want to
     # check that the selector is here. Will use this for now.
     expect(page).to have_css '.player__play'
-    expect(page).to have_css '.player__pause'
     expect(page).to have_css '.player__next'
     expect(page).to have_css '.player__previous'
   end

@@ -127,10 +127,12 @@ $ ->
   # File is getting a bit large, probably should split it up a bit
   $('.player__play').click ->
     PlayerController.mainPlayer.play()
+    togglePlayButton()
     return
 
   $('.player__pause').click ->
     PlayerController.mainPlayer.pause()
+    togglePlayButton()
     return
 
   $('.player__next').click ->
@@ -140,3 +142,11 @@ $ ->
   $('.player__previous').click ->
     PlayerController.mainPlayer.previous()
     return
+
+  togglePlayButton = ->
+    if $('.player__play').css('display') != 'none'
+      $('.player__play').css('display', 'none');
+      $('.player__pause').css('display', 'inline-block');
+    else
+      $('.player__play').css('display', 'inline-block');
+      $('.player__pause').css('display', 'none');

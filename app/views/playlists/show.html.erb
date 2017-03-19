@@ -15,10 +15,10 @@
 
   <!-- TODO: Maybe pull out into partial -->
   <div class='player'>
-    <span class='player__play'>Play</span>
-    <span class='player__pause'>Pause</span>
-    <span class='player__previous'>Previous</span>
-    <span class='player__next'>Next</span>
+    <div style='display: inline-block;user-select: none;' class='player__previous'><i class="fa fa-step-backward fa-2x" aria-hidden="true"></i></div>
+    <div style='display: inline-block;user-select: none;' class='player__play'><i class="fa fa-play fa-2x" aria-hidden="true"></i></div>
+    <div style='display: inline-block;display:none;user-select: none;' class='player__pause'><i class="fa fa-pause fa-2x" aria-hidden="true"></i></div>
+    <div style='display: inline-block;user-select: none;' class='player__next'><i class="fa fa-step-forward fa-2x" aria-hidden="true"></i></div>
   </div>
 
   <div id="youtube-player"></div>
