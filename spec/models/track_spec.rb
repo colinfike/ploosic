@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Track, "validations" do
-  it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:site) }
   it { is_expected.to validate_presence_of(:url) }
   it {should_not allow_value('https://mysterysite.com').for(:url)}
@@ -12,15 +11,44 @@ RSpec.describe Track, "validations" do
   end
 end
 
+RSpec.describe Track, ".create" do
+  it 'detects and sets site_id based on url' do
+    soundcloud = create(:site, name: 'SoundCloud')
+    track = build(:track, site: nil, url: 'https://soundcloud.com/moeshop/love-taste')
+    track.save
+    expect(track.site.name).to eq('SoundCloud')
+  end
+end
+
 RSpec.describe Track, ".add_to_playlist" do
   it "adds track to playlist" do
+    track_url = "https://soundcloud.com/moeshop/love-taste"
+    playlist = create(:playlist)
+
+    result = Track.add_to_playlist track_url, playlist.id
+
+    expect(playlist.tracks.count).to eq(1)
+    expect(result).to be_truthy
   end
 
   it "returns false if url is invalid" do
+    track_url = "coolsounds.co?cool_track=123"
+    playlist = create(:playlist)
+
+    result = Track.add_to_playlist track_url, playlist.id
+
+    expect(playlist.tracks.count).to eq(0)
+    expect(result).to be false
   end
 
   # May be over kill to check ALL params
   it "returns false if playlist is invalid" do
+    track_url = "https://soundcloud.com/moeshop/love-taste"
+    playlist = nil
+
+    result = Track.add_to_playlist track_url, playlist
+
+    expect(result).to be false
   end
 end
 
