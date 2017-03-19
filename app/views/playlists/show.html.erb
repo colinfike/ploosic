@@ -3,6 +3,7 @@
 
   <%= form_tag '/tracks' do %>
     <%= text_field_tag 'track_url', nil, placeholder: 'Enter Track Url Here' %>
+    <%= submit_tag 'Add Track', id: 'track_submit' %>
   <% end %>
 
   <div class='track-container'>

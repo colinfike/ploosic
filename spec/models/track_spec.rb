@@ -12,6 +12,18 @@ RSpec.describe Track, "validations" do
   end
 end
 
+RSpec.describe Track, ".add_to_playlist" do
+  it "adds track to playlist" do
+  end
+
+  it "returns false if url is invalid" do
+  end
+
+  # May be over kill to check ALL params
+  it "returns false if playlist is invalid" do
+  end
+end
+
 RSpec.describe Track, 'obsolete association tests' do
   it 'can belong to a site' do
     track = build(:track)
