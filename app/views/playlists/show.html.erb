@@ -1,10 +1,14 @@
 <%= content_for :content do %>
   <%= render_data_div(@playlist.tracks) %>
 
-  <%= form_tag '/tracks' do %>
-    <%= text_field_tag 'track_url', nil, placeholder: 'Enter Track Url Here' %>
+  <%= form_tag '/tracks', class: 'form' do %>
+    <div class='row'>
+      <%= text_field_tag 'track_url', nil, placeholder: 'Enter Track Url Here', class: 'form__input columns ten offset-by-one' %>
+    </div>
     <%= hidden_field_tag :playlist_id, @playlist.id %>
-    <%= submit_tag 'Add Track', id: 'track_submit' %>
+    <div class='row'>
+      <%= submit_tag 'Add Track', id: 'track_submit', class: ' form__submit columns four offset-by-four' %>
+    </div>
   <% end %>
 
   <div class='track-container'>

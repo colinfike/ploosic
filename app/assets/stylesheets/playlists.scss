@@ -1,7 +1,19 @@
-// Place all the styles related to the Playlists controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$main: #9C27B0;
+$accent: #68EFAD;
+
+.form {
+}
+
+.form__input {
+}
+
+.form__submit {
+}
 
 .hidden {
   visibility: hidden;
+}
+
+[type=submit] {
+  background: $accent;
 }

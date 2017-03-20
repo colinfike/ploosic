@@ -2,6 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :get_playlist, only: [:show]
 
   def index
+    # redirect_to '/playlists/1'
   end
 
   def show

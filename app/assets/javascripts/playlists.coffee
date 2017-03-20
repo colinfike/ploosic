@@ -39,6 +39,8 @@ $ ->
       currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
 
 
+
+
     # Soundcloud Player
     soundcloudPlayer = (->
       # Init soundcloud widget.
@@ -59,6 +61,12 @@ $ ->
     youtubePlayer = (->
       youtubeWidget = undefined
 
+      getYoutubeId = (url) ->
+        if url.includes('youtu.be')
+          url.substr(url.lastIndexOf('/') + 1)
+        else
+          url.substr(url.lastIndexOf('=') + 1)
+
       setWidget: ->
         youtubeWidget = new (YT.Player)('youtube-player',
           height: '0'
@@ -70,8 +78,10 @@ $ ->
         )
         return
 
+      # Change to use URL
       start: ->
-        youtubeWidget.loadVideoById playlist[trackIndex].url.substr(playlist[trackIndex].url.lastIndexOf('/') + 1)
+        youtubeWidget.loadVideoById getYoutubeId(playlist[trackIndex].url)
+        # youtubeWidget.loadVideoById playlist[trackIndex].url.substr(playlist[trackIndex].url.lastIndexOf('/') + 1)
 
       resume: ->
         youtubeWidget.playVideo()

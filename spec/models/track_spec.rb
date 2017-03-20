@@ -14,9 +14,12 @@ end
 RSpec.describe Track, ".create" do
   it 'detects and sets site_id based on url' do
     soundcloud = create(:site, name: 'SoundCloud')
-    track = build(:track, site: nil, url: 'https://soundcloud.com/moeshop/love-taste')
+    track = Track.new(url: 'https://soundcloud.com/moeshop/love-taste')
+    # track = build(:track, site: nil, url: 'https://soundcloud.com/moeshop/love-taste')
     track.save
     expect(track.site.name).to eq('SoundCloud')
+    expect(track.name).to eq('Love Taste')
+    expect(track.arist).to eq('Moeshop')
   end
 end
 

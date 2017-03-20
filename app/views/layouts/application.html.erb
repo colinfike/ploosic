@@ -4,7 +4,6 @@
     <title>Ploosic</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/picnicss/6.3.2/picnic.min.css' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato|Pacifico' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
@@ -15,6 +14,10 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= yield :content %>
+
+    <div class='body-content container'>
+      <%= yield :content %>
+    </div>
+
   </body>
 </html>

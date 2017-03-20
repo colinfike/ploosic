@@ -1,18 +1,19 @@
-$purple: #8D5A97;
+$main: #9C27B0;
+$accent: #68EFAD;
 
 .header {
   margin-bottom: 15px;
-  height: 60px;
+  height: 88px;
+  text-align: center;
 }
 
 .header__logo {
   font-family: 'Pacifico', cursive;
-  font-size: 50px;
+  font-size: 66px;
   margin-left: 5px;
-  color: #31493C;
+  color: $main;
 }
 
 body {
-  background-color: #DEFFF2;
   font-family: 'Lato', sans-serif;
 }

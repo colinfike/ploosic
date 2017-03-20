@@ -9,6 +9,7 @@ class Track < ApplicationRecord
     message: "must be valid soundcloud/youtube/bancamp url" }
 
   before_validation :set_site
+  before_save :fetch_track_information
 
   def self.add_to_playlist track_url, playlist_id
     playlist = Playlist.find_by(id: playlist_id)
@@ -30,5 +31,20 @@ class Track < ApplicationRecord
     elsif self.url.match(/https:\/\/.*youtu\.be|https:\/\/.*youtube\./)
       self.site = Site.find_by(name: 'YouTube')
     end
+  end
+
+  def fetch_track_information
+    return if name || artist
+    if site_id = 1
+      fetch_soundcloud_info(url)
+    else
+      fetch_youtube_info(url)
+    end
+  end
+
+  def fetch_soundcloud_info(url)
+  end
+
+  def fetch_youtube_info(url)
   end
 end
