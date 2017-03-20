@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class='track-container'>
+  <div class='track-container row'>
     <% @playlist.tracks.each do |track| %>
       <%= render_track(track) %>
     <% end %>
