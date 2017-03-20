@@ -13,7 +13,7 @@ class Track < ApplicationRecord
 
   def self.add_to_playlist track_url, playlist_id
     playlist = Playlist.find_by(id: playlist_id)
-    track = Track.create(url: track_url, name: "TempName: #{Time.zone.now}")
+    track = Track.create(url: track_url)
     if playlist && track.errors.empty?
       playlist.tracks << track
       return playlist
@@ -34,17 +34,29 @@ class Track < ApplicationRecord
   end
 
   def fetch_track_information
-    return if name || artist
-    if site_id = 1
-      fetch_soundcloud_info(url)
+    return if name || artist_name
+    if site_id == 1
+      fetch_soundcloud_info
     else
-      fetch_youtube_info(url)
+      fetch_youtube_info
     end
   end
 
-  def fetch_soundcloud_info(url)
+  def fetch_soundcloud_info
+    begin
+      doc = Nokogiri::HTML(open(url))
+      if doc
+        self.artist_name = doc.css('h1').first.children[2].children[0].text
+        self.name = doc.css('h1').first.children.first.children[0].text
+      end
+    rescue => e
+      logger.info "URL not found in fetch_soundcloud_info"
+    end
+    self.artist_name = "Unknown" if artist_name.nil?
+    self.name = "Unknown" if name.nil?
   end
 
-  def fetch_youtube_info(url)
+  # Add test
+  def fetch_youtube_info
   end
 end

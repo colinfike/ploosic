@@ -1,7 +1,11 @@
 module PlaylistsHelper
+
+  # Also not a fan of using concat here but it's cleaner than using two different
+  # helpers, right? Cleaner then having the html right in the view? Maybe not.
   def render_track(track)
     content_tag :div, class: "track" do
-      content_tag :span, track.name, class: 'track__name', style: 'color: #001A23;'
+      concat(content_tag :span, track.name, class: 'track__name', style: 'color: #001A23;')
+      concat(content_tag :span, "By #{track.artist_name}", class: 'track__artist_name', style: 'color: #001A23;margin-left:20px;')
     end
   end
 

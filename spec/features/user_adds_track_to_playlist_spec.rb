@@ -12,7 +12,7 @@ RSpec.feature "user adds track to playlist", type: :feature do
 
     # TODO: Need to implement fetching of information of each track since just
     # the link isn't going to cut it
-    expect(page).to have_selector '.track__name', text: 'Come Get It'
-    expect(page).to have_selector '.track__artist', text: 'Badministrator'
+    expect(page).to have_selector '.track__name', text: 'Police Brutality'
+    expect(page).to have_selector '.track__artist_name', text: 'Badministrator'
   end
 end

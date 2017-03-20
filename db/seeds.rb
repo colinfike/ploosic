@@ -14,9 +14,9 @@ admin = User.create()
 
 tracks = []
 sample_playlist = Playlist.create(user: admin)
-tracks << Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
-tracks << Track.create(site: soundcloud, name: "Love Taste", url: "https://soundcloud.com/moeshop/love-taste")
-tracks << Track.create(site: soundcloud, name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
+tracks << Track.create(site: soundcloud, artist_name: "Unknown", name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+tracks << Track.create(site: soundcloud, artist_name: "Unknown", name: "Love Taste", url: "https://soundcloud.com/moeshop/love-taste")
+tracks << Track.create(site: soundcloud, artist_name: "Unknown", name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
 tracks.each{ |track| sample_playlist.tracks << track }
 
 tracks = []
@@ -28,8 +28,8 @@ tracks.each{ |track| sample_playlist.tracks << track }
 
 tracks = []
 sample_playlist = Playlist.create(user: admin)
-tracks << Track.create(site: soundcloud, name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+tracks << Track.create(site: soundcloud, artist_name: "Unknown", name: "Blinded By Light", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
 tracks << Track.create(site: youtube, name: "Attack of Green Shirt Uncle", url: "https://youtu.be/44bigiDX6lI")
-tracks << Track.create(site: soundcloud, name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
+tracks << Track.create(site: soundcloud, artist_name: "Unknown", name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
 tracks << Track.create(site: youtube, name: "Catgroove", url: "https://youtu.be/twqM56f_cVo")
 tracks.each{ |track| sample_playlist.tracks << track }

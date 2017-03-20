@@ -12,14 +12,13 @@ RSpec.describe Track, "validations" do
 end
 
 RSpec.describe Track, ".create" do
-  it 'detects and sets site_id based on url' do
+  it 'detects and sets attributes based on url' do
     soundcloud = create(:site, name: 'SoundCloud')
     track = Track.new(url: 'https://soundcloud.com/moeshop/love-taste')
-    # track = build(:track, site: nil, url: 'https://soundcloud.com/moeshop/love-taste')
     track.save
     expect(track.site.name).to eq('SoundCloud')
-    expect(track.name).to eq('Love Taste')
-    expect(track.arist).to eq('Moeshop')
+    expect(track.name).to eq('Love Taste (w/ Jamie Paige & Shiki)')
+    expect(track.artist_name).to eq('Moe Shop')
   end
 end
 
@@ -54,6 +53,33 @@ RSpec.describe Track, ".add_to_playlist" do
     expect(result).to be false
   end
 end
+
+# FIXME: (POTENTIALLY) This is just saving and testing this works via callback.
+# I'd rather call it directly but since it's private I can't. I may be able to
+# do this better with stubbing or something.
+RSpec.describe Track, "#fetch_soundcloud_info" do
+  it 'sets artist_name and track with valid url' do
+    track_url = 'https://soundcloud.com/moeshop/love-taste'
+    track = Track.new(url: track_url)
+
+    track.save
+
+    expect(track.artist_name).to eq('Moe Shop')
+    expect(track.name).to eq('Love Taste (w/ Jamie Paige & Shiki)')
+  end
+
+  it 'sets artist_name and track to unknown with invalid url' do
+    track_url = 'https://soundcloud.com/moeshop/oasndona-taste'
+    track = Track.new(url: track_url)
+
+    track.save
+
+    expect(track.artist_name).to eq('Unknown')
+    expect(track.name).to eq('Unknown')
+  end
+end
+
+
 
 RSpec.describe Track, 'obsolete association tests' do
   it 'can belong to a site' do
