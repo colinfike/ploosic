@@ -14,12 +14,13 @@ $ ->
     PlayerController.mainPlayer.initYoutube()
     console.log 'onYouTubeIframeAPIReady'
 
-  window.onPlayerReady = (event) ->
-    event.target.playVideo
-    console.log 'onPlayerReady'
-
-  window.onPlayerStateChange = (event) ->
-    console.log 'onPlayerStateChange'
+  # window.onPlayerReady = (event) ->
+  #   event.target.playVideo
+  #   console.log 'onPlayerReady'
+  #
+  # window.onPlayerStateChange = (event) ->
+  #   console.log 'onPlayerStateChange'
+  #   console.log event.data
   ### END YOUTUBE API ###
 
 
@@ -32,13 +33,6 @@ $ ->
     trackUpdated = true
     songPlaying = false
     currentPlayer = null
-
-    # Helper functions
-    updatePlayer = ->
-      console.log("update Site ID: " + playlist[trackIndex].site_id)
-      currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
-
-
 
 
     # Soundcloud Player
@@ -60,6 +54,16 @@ $ ->
     # YouTube Player
     youtubePlayer = (->
       youtubeWidget = undefined
+
+      onPlayerReady = (event) ->
+        console.log 'onPlayerReady'
+
+      onPlayerStateChange = (event) ->
+        console.log 'onPlayerStateChange'
+        # If youtube widget changes to playling status and it's not the current
+        # player then pause it.
+        if (event.data == 1) and (playlist[trackIndex].site_id == 1)
+          youtubeWidget.pauseVideo()
 
       getYoutubeId = (url) ->
         if url.includes('youtu.be')
@@ -91,6 +95,11 @@ $ ->
 
     # Main public player
     PlayerController.mainPlayer = (->
+
+      # Helper functions
+      updatePlayer = ->
+        console.log("update Site ID: " + playlist[trackIndex].site_id)
+        currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
 
       updatePlayer()
 
