@@ -5,8 +5,6 @@ class TracksController < ApplicationController
   # it's a safe assumption that a playlist will exist if this
   # action is being hit.
   def create
-    # doc.css('h1').first.children[2].children[0].text artist
-    # doc.css('h1').first.children.first.children.text song name
     playlist = Track.add_to_playlist(params[:track_url], params[:playlist_id])
     if playlist
       redirect_to playlist

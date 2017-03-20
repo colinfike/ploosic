@@ -1,0 +1,28 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/6iW_ld0SLfmeG8as9xcyoPBxXkU\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/23KHKtzLmDpXBE07kLRkYhw4JYg\"",
+   "id": "twqM56f_cVo",
+   "topicDetails": {
+    "relevantTopicIds": [
+     "/m/04rlf",
+     "/m/04rlf",
+     "/m/05qjc",
+     "/m/02jjt"
+    ],
+    "topicCategories": [
+     "https://en.wikipedia.org/wiki/Performing_arts",
+     "https://en.wikipedia.org/wiki/Entertainment",
+     "https://en.wikipedia.org/wiki/Music"
+    ]
+   }
+  }
+ ]
+}

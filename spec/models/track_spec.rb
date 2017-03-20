@@ -79,7 +79,27 @@ RSpec.describe Track, "#fetch_soundcloud_info" do
   end
 end
 
+RSpec.describe Track, "#fetch_youtube_info" do
+  it 'sets artist_name and track with valid url' do
+    track_url = 'https://youtu.be/nY7GnAq6Znw'
+    track = Track.new(url: track_url)
 
+    track.save
+
+    expect(track.artist_name).to eq('Jon Gomm')
+    expect(track.name).to eq('Jon Gomm - Passionflower')
+  end
+
+  it 'sets artist_name and track to unknown with invalid url' do
+    track_url = 'https://youtu.be/nY7GnAq6asdasdZnw'
+    track = Track.new(url: track_url)
+
+    track.save
+
+    expect(track.artist_name).to eq('Unknown')
+    expect(track.name).to eq('Unknown')
+  end
+end
 
 RSpec.describe Track, 'obsolete association tests' do
   it 'can belong to a site' do

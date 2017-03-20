@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'rest-client'
+gem 'httparty'
+
 gem 'nokogiri'
 
 # Use jquery as the JavaScript library

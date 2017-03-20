@@ -56,7 +56,28 @@ class Track < ApplicationRecord
     self.name = "Unknown" if name.nil?
   end
 
-  # Add test
   def fetch_youtube_info
+    begin
+      video_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{get_youtube_id}&key=#{YOUTUBE_API_KEY}").body)
+      channel_id = video_response['items'][0]['snippet']['channelId']
+      title = video_response['items'][0]['snippet']['title']
+
+      channel_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/channels?part=snippet&id=#{channel_id}&key=#{YOUTUBE_API_KEY}").body)
+      channel_name = channel_response['items'][0]['snippet']['title']
+
+      self.artist_name = channel_name
+      self.name = title
+    rescue => e
+      self.artist_name = 'Unknown'
+      self.name = 'Unknown'
+    end
+  end
+
+  def get_youtube_id
+    if url.include?('youtu.be')
+      url.split('/').last
+    else
+      url.split('=').last
+    end
   end
 end

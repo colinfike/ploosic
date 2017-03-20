@@ -81,7 +81,6 @@ $ ->
       # Change to use URL
       start: ->
         youtubeWidget.loadVideoById getYoutubeId(playlist[trackIndex].url)
-        # youtubeWidget.loadVideoById playlist[trackIndex].url.substr(playlist[trackIndex].url.lastIndexOf('/') + 1)
 
       resume: ->
         youtubeWidget.playVideo()
