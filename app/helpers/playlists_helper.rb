@@ -28,9 +28,9 @@ module PlaylistsHelper
 
   def render_site_icon(site_id)
     if site_id == 1
-      content_tag :i, nil, class: "fa fa-lg fa-youtube-square track__icon track__icon--youtube", aria_hidden: true
-    else
       content_tag :i, nil, class: "fa fa-lg fa-soundcloud track__icon", aria_hidden: true
+    else
+      content_tag :i, nil, class: "fa fa-lg fa-youtube-square track__icon track__icon--youtube", aria_hidden: true
     end
   end
 end

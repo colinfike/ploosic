@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :get_playlist, only: [:show]
+  # before_action :playlist_access, only: [:show]
 
   def index
     # redirect_to '/playlists/1'
@@ -25,4 +26,14 @@ class PlaylistsController < ApplicationController
   def get_playlist
     @playlist = Playlist.find_by(id: params[:id])
   end
+
+  # TODO: Update this for private playlists
+  # def playlist_access
+  #   if session[:user_id]
+  #     user = User.find_by(id: session[:user_id])
+  #     false if user.playlist.id != params[:id]
+  #   else
+  #     false
+  #   end
+  # end
 end

@@ -1,5 +1,4 @@
-# May have missed the mark a bit with the module pattern but
-# this should be ok for now
+# First stab at the module pattern. Was pretty neat.
 $ ->
 
   ### BEGIN YOUTUBE API ###
@@ -27,9 +26,16 @@ $ ->
 
     # Soundcloud Player
     soundcloudPlayer = (->
-      # Init soundcloud widget.
-      # TODO: In future load playlist of songs at initialization if possible
       soundcloudWidget = SC.Widget('soundcloud-player')
+
+      # Handles edge cases where the player can start up after it's been paused
+      soundcloudWidget.bind SC.Widget.Events.PLAY, ->
+        if (playlist[trackIndex].site_id == 2) or !songPlaying
+          soundcloudWidget.pause()
+
+      # Handles going to the next song when it finishes
+      soundcloudWidget.bind SC.Widget.Events.FINISH, ->
+        PlayerController.mainPlayer.next()
 
       start: ->
         soundcloudWidget.load playlist[trackIndex].url, auto_play: true
@@ -51,9 +57,12 @@ $ ->
       onPlayerStateChange = (event) ->
         console.log 'onPlayerStateChange'
         # If youtube widget changes to playling status and it's not the current
-        # player then pause it.
-        if (event.data == 1) and (playlist[trackIndex].site_id == 1)
+        # player then pause it. Also handles going to the next song.
+        # TODO: Figure out operator binding precendence with coffeescript
+        if (event.data == 1) and ((playlist[trackIndex].site_id == 1) or !songPlaying)
           youtubeWidget.pauseVideo()
+        else if event.data == 0
+          PlayerController.mainPlayer.next()
 
       getYoutubeId = (url) ->
         if url.includes('youtu.be')
@@ -114,6 +123,7 @@ $ ->
         trackUpdated = true
         trackIndex = if trackIndex == playlist.length - 1 then 0 else trackIndex + 1
         currentPlayer.pause()
+        updateTrackList()
         PlayerController.mainPlayer.play() if songPlaying
 
       previous: ->
@@ -128,6 +138,7 @@ $ ->
         trackUpdated = true
         trackIndex = index
         currentPlayer.pause()
+        updateTrackList()
         PlayerController.mainPlayer.play()
 
       initYoutube: ->
