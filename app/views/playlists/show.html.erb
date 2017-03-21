@@ -16,10 +16,10 @@
       <div class="track columns ten offset-by-one">
         <span class='track__name'>
           <%= render_site_icon(track.site_id) %>
-          <%= track.name %>
+          <span><%= track.name %></span>
         </span>
         <span class='track__artist_name'>by <%= track.artist_name %></span>
-        <span class='track__play u-pull-right'><i class="fa fa-lg fa-play-circle-o" aria-hidden="true"></i></span>
+        <span class='track__play'><i class="fa fa-lg fa-play-circle-o" aria-hidden="true"></i></span>
       </div>
     <% end %>
   </div>

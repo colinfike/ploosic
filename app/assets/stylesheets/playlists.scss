@@ -39,17 +39,27 @@ $accent: #68EFAD;
   color: rgb(80,80,80);
   font-size: 15px;
   display: inline-block;
-  width: 75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 60%;
 }
 
 .track__artist_name {
   color: #8e8485;
   font-size: 14px;
   display: inline-block;
-  width: 15%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 30%;
 }
 
 .track__play {
+  display: inline-block;
+  width: 5%;
 }
 
 .track__icon {
