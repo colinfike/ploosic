@@ -3,7 +3,7 @@
 
   <%= form_tag '/tracks', class: 'form' do %>
     <div class='row'>
-      <%= text_field_tag 'track_url', nil, placeholder: 'Enter Track Url Here', class: 'form__input columns ten offset-by-one' %>
+      <%= text_field_tag 'track_url', nil, placeholder: 'Paste SoundCloud or YouTube url here', class: 'form__input columns ten offset-by-one' %>
     </div>
     <%= hidden_field_tag :playlist_id, @playlist.id %>
     <div class='row'>

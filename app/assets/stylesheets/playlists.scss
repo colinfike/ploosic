@@ -9,11 +9,19 @@ $accent: #68EFAD;
 .player__icon {
   display: inline-block;
   user-select: none;
-  margin-right: 20px;
+  // margin-right: 20px;
 }
 
 .player__icon--hidden {
   display: none;
+}
+
+.player__play {
+  margin-left: 5px;
+}
+
+.form {
+  margin-bottom: 5px;
 }
 
 .hidden {
