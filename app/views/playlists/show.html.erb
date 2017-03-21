@@ -2,6 +2,8 @@
   <%= render_data_div(@playlist.tracks) %>
 
   <%= form_tag '/tracks', class: 'form' do %>
+    <%= render_errors(flash) %>
+
     <div class='row'>
       <%= text_field_tag 'track_url', nil, placeholder: 'Paste SoundCloud or YouTube url here', class: 'form__input columns ten offset-by-one' %>
     </div>
@@ -10,6 +12,7 @@
       <%= submit_tag 'Add Track', id: 'track_submit', class: ' form__submit columns four offset-by-four' %>
     </div>
   <% end %>
+  <%= render_create_link(@playlist) %>
 
   <%= render 'player' %>
 

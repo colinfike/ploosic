@@ -1,9 +1,9 @@
 language: ruby
-rvm:
-  ruby-2.4.0
-
+rvm: ruby-2.4.0
 script: bundle exec rspec
-
 before_script:
-  - RAILS_ENV=test bundle exec rake db:create --trace
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:create --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+env:
+  matrix:
+    secure: ifEiDZWgrKy0iIIRim/QXkQJ5pMC6DZgeWD1ksFyYxJqb5Ad17ypEroaM/x42Y2PdVhiXO06iS7s7JvTpJWRFyXFFta816zZt45OxorrHtWep2PX8CVss8Riveauk8TAiFPU0Fq3S5QLJ94DotVq8Ti2HTZ+Y5mmNfpWzntSBxKXJ9egTiMHqJZwzVDkXgMJoSKawzW3t80bKPeAh0hgaMN/uiNdFVO6rgmKlU+wR3wI0NBbpoTyJBhYYNAagAKqaPU98Rb5l8x6Kx3KoFem4+9LaGF88qTIIjOu+Bz70amvIzupcxtfSv1161pCakK86S7UMx6aOFo2jbd0OrNppZ/10Tbp2uyaZnXONNZSuqx6p0XIx1j+bFjIbfPqMBSAIZSKbo0kOHe7n9nSUx4tDfcc14mhyYAgNgmXX9xfN7H+Q5smH3Jrrw4GTr7/YpqqL24WNHve1v13yuKMr0wKEMhL4avB/IWLpwa8RHakwKCjVYtPm8F5ASkgzoWAkGsPPVO1XMbNYkTKzxtnCAEKYO3cbDZH4M+EBTVrjIXJFCvHPZvCPgr6SPw1GUmZeojHZ15V40oLcPa/yYHm4dMHdUxSKsTxdyfu1c7nCteDGv4vH/hP/Fd9vPAwAzJNU3oshKQjsdqYtdufiHzhEpLg15RTkQE4phhuqobAARDfXeg=

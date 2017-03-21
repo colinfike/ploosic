@@ -58,11 +58,11 @@ class Track < ApplicationRecord
 
   def fetch_youtube_info
     begin
-      video_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{get_youtube_id}&key=#{YOUTUBE_API_KEY}").body)
+      video_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{get_youtube_id}&key=#{ENV['YOUTUBE_API_KEY']}").body)
       channel_id = video_response['items'][0]['snippet']['channelId']
       title = video_response['items'][0]['snippet']['title']
 
-      channel_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/channels?part=snippet&id=#{channel_id}&key=#{YOUTUBE_API_KEY}").body)
+      channel_response = JSON.parse(RestClient.get("https://www.googleapis.com/youtube/v3/channels?part=snippet&id=#{channel_id}&key=#{ENV['YOUTUBE_API_KEY']}").body)
       channel_name = channel_response['items'][0]['snippet']['title']
 
       self.artist_name = channel_name

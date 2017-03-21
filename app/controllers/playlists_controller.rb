@@ -17,6 +17,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
+    redirect_to root_path if @playlist.nil?
   end
 
   def create
@@ -26,7 +27,7 @@ class PlaylistsController < ApplicationController
       session[:user_id] = user.id
       render :show
     else
-      flash[:error] = "Please try again later"
+      flash[:error] = "An error occurred. Please try again later."
       redirect_to root_url
     end
   end

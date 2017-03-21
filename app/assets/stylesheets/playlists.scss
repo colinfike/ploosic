@@ -1,6 +1,7 @@
 $main: #9C27B0;
 $secondary: #7A1EA1;
 $accent: #68EFAD;
+$error: #FF1744;
 
 .player {
   margin-bottom: 15px;
@@ -103,4 +104,9 @@ $accent: #68EFAD;
 .fa:active,
 .fa:focus {
   color: #691A99;
+}
+
+.error {
+  color: $error;
+  font-size: 12px;
 }

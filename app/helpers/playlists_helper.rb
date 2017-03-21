@@ -1,15 +1,5 @@
 module PlaylistsHelper
 
-  # Also not a fan of using concat here but it's cleaner than using two different
-  # helpers, right? Cleaner then having the html right in the view? Maybe not.
-  def render_track(track)
-    content_tag :div, class: "track columns ten offset-by-one" do
-      concat(content_tag :span, track.name, class: 'track__name')
-      concat(content_tag :span, "by #{track.artist_name}", class: 'track__artist_name')
-      concat(content_tag :i, nil, class: 'fa fa-play-circle-o track__play', aria_hidden: "true")
-    end
-  end
-
   def render_data_div(tracks)
     track_json = []
     tracks.each do |track|
@@ -31,6 +21,20 @@ module PlaylistsHelper
       content_tag :i, nil, class: "fa fa-lg fa-soundcloud track__icon", aria_hidden: true
     else
       content_tag :i, nil, class: "fa fa-lg fa-youtube-square track__icon track__icon--youtube", aria_hidden: true
+    end
+  end
+
+  def render_errors(flash)
+    if flash[:error]
+      content_tag :div, class: 'row columns ten offset-by-one error' do
+        content_tag :span, flash[:error]
+      end
+    end
+  end
+
+  def render_create_link(playlist)
+    if playlist.id == 1
+      link_to 'Create Playlist', playlists_path, method: :post, class: 'button columns four offset-by-four', style: 'margin-bottom: 15px;'
     end
   end
 end

@@ -9,7 +9,7 @@ class TracksController < ApplicationController
     if playlist
       redirect_to playlist
     else
-      flash[:error] = "An error occurred trying to add track to playlist"
+      flash[:error] = "An error occurred trying to add track. Ensure your url is valid."
       redirect_back(fallback_location: root_path)
     end
   end
