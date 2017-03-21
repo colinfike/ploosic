@@ -13,17 +13,7 @@ $ ->
   window.onYouTubeIframeAPIReady = ->
     PlayerController.mainPlayer.initYoutube()
     console.log 'onYouTubeIframeAPIReady'
-
-  # window.onPlayerReady = (event) ->
-  #   event.target.playVideo
-  #   console.log 'onPlayerReady'
-  #
-  # window.onPlayerStateChange = (event) ->
-  #   console.log 'onPlayerStateChange'
-  #   console.log event.data
   ### END YOUTUBE API ###
-
-
 
   window.PlayerController = {}
   (->
@@ -97,8 +87,11 @@ $ ->
     PlayerController.mainPlayer = (->
 
       # Helper functions
+      updateTrackList = ->
+        $('.track').removeClass('track--playing')
+        $('#track-' + trackIndex).addClass('track--playing')
+
       updatePlayer = ->
-        console.log("update Site ID: " + playlist[trackIndex].site_id)
         currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
 
       updatePlayer()
@@ -107,6 +100,7 @@ $ ->
         songPlaying = true
         updatePlayer()
         if trackUpdated
+          updateTrackList()
           currentPlayer.start()
           trackUpdated = false
         else
@@ -130,7 +124,7 @@ $ ->
 
       # If a user wants a certain track to be played
       playTrack: (index) ->
-        index = 0 if (index < 0 || index > 0)
+        index = 0 if (index < 0 || index > (playlist.length - 1))
         trackUpdated = true
         trackIndex = index
         currentPlayer.pause()
@@ -146,20 +140,23 @@ $ ->
   $('.player__play').click ->
     PlayerController.mainPlayer.play()
     togglePlayButton()
-    return
 
   $('.player__pause').click ->
     PlayerController.mainPlayer.pause()
     togglePlayButton()
-    return
 
   $('.player__next').click ->
     PlayerController.mainPlayer.next()
-    return
 
   $('.player__previous').click ->
     PlayerController.mainPlayer.previous()
-    return
+
+
+  $('.track__play').click ->
+    index = $(this).parents('.track').data('index')
+    $('.player__play').css('display', 'none');
+    $('.player__pause').css('display', 'inline-block');
+    PlayerController.mainPlayer.playTrack index
 
   togglePlayButton = ->
     if $('.player__play').css('display') != 'none'

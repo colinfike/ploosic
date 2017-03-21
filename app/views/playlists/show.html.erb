@@ -11,27 +11,24 @@
     </div>
   <% end %>
 
+  <%= render 'player' %>
+
   <div class='track-container row'>
-    <% @playlist.tracks.each do |track| %>
-      <div class="track columns ten offset-by-one">
+    <% @playlist.tracks.each_with_index do |track, index| %>
+      <div id="track-<%= index %>" data-index="<%= index %>" class="track columns ten offset-by-one">
         <span class='track__name'>
           <%= render_site_icon(track.site_id) %>
           <span><%= track.name %></span>
         </span>
         <span class='track__artist_name'>by <%= track.artist_name %></span>
         <span class='track__play'><i class="fa fa-lg fa-play-circle-o" aria-hidden="true"></i></span>
+        <!-- <span class='track__pause'><i class="fa fa-lg fa-pause" aria-hidden="true"></i></span> -->
       </div>
     <% end %>
   </div>
 
-  <!-- TODO: Maybe pull out into partial -->
-  <div class='player'>
-    <div style='display: inline-block;user-select: none;' class='unselectable player__previous'><i class="fa fa-step-backward fa-2x" aria-hidden="true"></i></div>
-    <div style='display: inline-block;user-select: none;' class='unselectable player__play'><i class="fa fa-play fa-2x" aria-hidden="true"></i></div>
-    <div style='display: inline-block;display:none;' class='unselectable player__pause'><i class="fa fa-pause fa-2x" aria-hidden="true"></i></div>
-    <div style='display: inline-block;user-select: none;' class='unselectable player__next'><i class="fa fa-step-forward fa-2x" aria-hidden="true"></i></div>
+  <div class='none'>
+    <div id="youtube-player"></div>
+    <iframe id='soundcloud-player' class='hidden' width="250" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= @url %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
   </div>
-
-  <div id="youtube-player"></div>
-  <iframe id='soundcloud-player' class='hidden' width="250" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= @url %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 <% end %>

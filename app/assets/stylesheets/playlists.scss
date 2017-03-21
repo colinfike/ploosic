@@ -1,17 +1,27 @@
 $main: #9C27B0;
+$secondary: #7A1EA1;
 $accent: #68EFAD;
 
-.form {
+.player {
+  margin-bottom: 15px;
 }
 
-.form__input {
+.player__icon {
+  display: inline-block;
+  user-select: none;
+  margin-right: 20px;
 }
 
-.form__submit {
+.player__icon--hidden {
+  display: none;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.none {
+  display: none;
 }
 
 [type=submit] {
@@ -31,19 +41,24 @@ $accent: #68EFAD;
   font-size: 17px;
   padding: 5px 20px 5px 20px;
 }
+
 .track:first-of-type {
   border-top: 1px solid #bbb;
 }
 
+.track--playing,
+.track--playing .track__artist_name {
+  color: $main;
+}
+
 .track__name {
-  color: rgb(80,80,80);
   font-size: 15px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
-  width: 60%;
+  width: 65%;
 }
 
 .track__artist_name {
@@ -54,7 +69,7 @@ $accent: #68EFAD;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
-  width: 30%;
+  width: 25%;
 }
 
 .track__play {
@@ -62,10 +77,22 @@ $accent: #68EFAD;
   width: 5%;
 }
 
+.track__pause {
+  display: none;
+  width: 5%;
+}
+
 .track__icon {
   margin-right: 15px;
 }
+
 .track__icon--youtube {
   margin-right: 20px;
   margin-left: 4px;
+}
+
+.fa:hover,
+.fa:active,
+.fa:focus {
+  color: #691A99;
 }
