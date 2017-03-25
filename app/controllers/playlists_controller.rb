@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :get_playlist, only: [:show]
+  before_action :check_session, only: [:index]
   # before_action :playlist_access, only: [:show]
 
   # This is a little hacky for now. If you hit the index and have a user account
@@ -9,8 +10,6 @@ class PlaylistsController < ApplicationController
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
       redirect_to playlist_path(user.playlist)
-      # FIXME: Handle the session being out of date or something. I.e the db has
-      # been wiped and the account no longer exists
     else
       redirect_to '/playlists/1'
     end
@@ -36,6 +35,12 @@ class PlaylistsController < ApplicationController
 
   def get_playlist
     @playlist = Playlist.find_by(id: params[:id])
+  end
+
+  def check_session
+    if session[:user_id]
+      reset_session if User.find_by(id: session[:user_id]).nil?
+    end
   end
 
   # TODO: Update this for private playlists
