@@ -13,13 +13,13 @@ youtube = Site.create(name: 'YouTube')
 admin = User.create()
 playlist = Playlist.first
 tracks = []
-tracks << Track.create(site: youtube, artist_name: "DisneyMusicVEVO", name: 'Beauty and the Beast (From "Beauty and the Beast"/Official Video)', url: "https://www.youtube.com/watch?v=axySrE0Kg6k")
 tracks << Track.create(site: soundcloud, artist_name: "Moe Shop", name: "Love Taste (w/ Jamie Paige & Shiki)", url: "https://soundcloud.com/moeshop/love-taste")
 tracks << Track.create(site: soundcloud, artist_name: "Shiki(TMNS) #TeamImouto", name: "Our World Is Worth Fighting For (Prod. meltycanon)", url: "https://soundcloud.com/thetmns/our-world-is-worth-fighting-for-prod-meltycanon")
 tracks << Track.create(site: youtube, artist_name: "Greco-Roman", name: "Roosevelt - Montreal (Official Video)", url: "https://www.youtube.com/watch?v=UBS6MM05KdY")
 tracks << Track.create(site: youtube, artist_name: "RecordMakers", name: "Kavinsky - Nightcall (Drive Original Movie Soundtrack)", url: "https://youtu.be/MV_3Dpw-BRY")
 tracks << Track.create(site: youtube, artist_name: "Jon Gomm", name: "Jon Gomm - Passionflower", url: "https://youtu.be/nY7GnAq6Znw")
 tracks << Track.create(site: soundcloud, artist_name: "@scottishfoldLP", name: "Blinded By Light / FINAL FANTASY XIII Cover", url: "https://soundcloud.com/scottishfoldlp/blinded-by-light-final-fantasy")
+tracks << Track.create(site: youtube, artist_name: "DisneyMusicVEVO", name: 'Beauty and the Beast (From "Beauty and the Beast"/Official Video)', url: "https://www.youtube.com/watch?v=axySrE0Kg6k")
 tracks << Track.create(site: soundcloud, artist_name: "Badministrator", name: "Police Brutality", url: "https://soundcloud.com/badministrator/come-get-it")
 tracks << Track.create(site: youtube, artist_name: "LadyGagaVEVO", name: "Lady Gaga - Bad Romance", url: "https://www.youtube.com/watch?v=qrO4YZeyl0I")
 
