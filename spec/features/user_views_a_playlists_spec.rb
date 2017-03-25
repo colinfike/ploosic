@@ -21,5 +21,6 @@ RSpec.feature "user views a playlist", type: :feature do
     expect(page).to have_css '.player__play'
     expect(page).to have_css '.player__next'
     expect(page).to have_css '.player__previous'
+    expect(page).to have_css '.player__shuffle'
   end
 end

@@ -81,7 +81,6 @@ $ ->
         )
         return
 
-      # Change to use URL
       start: ->
         youtubeWidget.loadVideoById getYoutubeId(playlist[trackIndex].url)
 
