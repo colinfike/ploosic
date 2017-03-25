@@ -18,7 +18,7 @@
 
   <div class='track-container row'>
     <% @playlist.tracks.each_with_index do |track, index| %>
-      <div id="track-<%= index %>" data-index="<%= index %>" class="track columns ten offset-by-one">
+      <div id="track-<%= track.id %>" data-index="<%= track.id %>" class="track columns ten offset-by-one">
         <span class='track__name'>
           <%= render_site_icon(track.site_id) %>
           <span><%= track.name %></span>

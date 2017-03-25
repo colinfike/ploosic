@@ -100,7 +100,7 @@ $ ->
       # Helper functions
       updateTrackList = ->
         $('.track').removeClass('track--playing')
-        $('#track-' + trackIndex).addClass('track--playing')
+        $('#track-' + playlist[trackIndex].id).addClass('track--playing')
 
       updatePlayer = ->
         currentPlayer = if playlist[trackIndex].site_id == 1 then soundcloudPlayer else youtubePlayer
@@ -132,10 +132,13 @@ $ ->
         trackUpdated = true
         trackIndex = if trackIndex == 0 then playlist.length - 1 else trackIndex - 1
         currentPlayer.pause()
+        updateTrackList()
         PlayerController.mainPlayer.play() if songPlaying
 
       # If a user wants a certain track to be played
-      playTrack: (index) ->
+      playTrack: (id) ->
+        index = playlist.findIndex (element) ->
+          return element.id == id
         index = 0 if (index < 0 || index > (playlist.length - 1))
         trackUpdated = true
         trackIndex = index
