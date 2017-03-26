@@ -22,6 +22,7 @@ $ ->
     trackUpdated = true
     songPlaying = false
     currentPlayer = null
+    shouldShuffle = false
 
 
     # Soundcloud Player
@@ -95,7 +96,7 @@ $ ->
     PlayerController.mainPlayer = (->
 
       $('.player__shuffle').click ->
-        playlist = shuffle(playlist)
+        shouldShuffle = true
 
       # Helper functions
       updateTrackList = ->
@@ -121,7 +122,13 @@ $ ->
         songPlaying = false
         currentPlayer.pause()
 
+      # Only shuffle when the next song plays if the shuffle button has been pressed.
+      # Ignore previous for now.
       next: ->
+        if shouldShuffle
+          shouldShuffle = false
+          shuffle(playlist)
+
         trackUpdated = true
         trackIndex = if trackIndex == playlist.length - 1 then 0 else trackIndex + 1
         currentPlayer.pause()
