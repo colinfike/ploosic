@@ -22,5 +22,7 @@ RSpec.feature "user views a playlist", type: :feature do
     expect(page).to have_css '.player__next'
     expect(page).to have_css '.player__previous'
     expect(page).to have_css '.player__shuffle'
+    # Leaving out the volume slider until soundcloud updates
+    # expect(page).to have_css '.player__volume'
   end
 end

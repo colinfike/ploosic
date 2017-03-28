@@ -46,6 +46,11 @@ $ ->
 
       pause: ->
         soundcloudWidget.pause()
+
+      setVolume: (volume) ->
+        console.log volume
+        soundcloudWidget.setVolume volume
+
     )()
 
     # YouTube Player
@@ -90,6 +95,10 @@ $ ->
 
       pause: ->
         youtubeWidget.pauseVideo()
+
+      setVolume: (volume) ->
+        youtubeWidget.setVolume volume
+
     )()
 
     # Main public player
@@ -153,6 +162,12 @@ $ ->
         updateTrackList()
         PlayerController.mainPlayer.play()
 
+      setVolume: (volume) ->
+        # console.log volume
+        volume = parseInt(volume)
+        youtubePlayer.setVolume(volume)
+        soundcloudPlayer.setVolume(volume)
+
       initYoutube: ->
         youtubePlayer.setWidget()
 
@@ -173,6 +188,9 @@ $ ->
 
   $('.player__previous').click ->
     PlayerController.mainPlayer.previous()
+
+  $('.player__volume').on 'input', ->
+    PlayerController.mainPlayer.setVolume($(this).val())
 
 
   $('.track__play').click ->
