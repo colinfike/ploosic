@@ -20,9 +20,9 @@ require 'capybara/rspec'
 RSpec.configure do |config|
   config.before(:suite) do
     Rails.application.load_seed # loading seeds
+    config.include Rails.application.routes.url_helpers
   end
 
-  config.include Rails.application.routes.url_helpers
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
