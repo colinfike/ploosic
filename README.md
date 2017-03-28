@@ -11,7 +11,7 @@ Currently in a V1.0 state where a user can access a personal playlist that they 
 1. Add BandCamp
 2. Add Private Playlists
 3. Add seeking/scrubbing through a song
-4. Add Shuffle
+4. ~~Add Shuffle~~
 5. Add Repeat
 6. Make the UI a little more robust as the functionality comes along
 7. Add stat tracking (models in place but no functionality yet)
