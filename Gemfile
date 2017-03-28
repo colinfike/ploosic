@@ -55,7 +55,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'spring-commands-rspec'
   gem 'rspec-rails', '~> 3.5'
-  # gem 'rails-controller-testing'
+  gem 'rails-controller-testing'
   gem 'terminal-notifier'
   gem 'capybara'
   gem 'database_cleaner'
