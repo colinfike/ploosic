@@ -20,4 +20,5 @@ Currently in a V1.0 state where a user can access a personal playlist that they 
 10. Pick start/end times for tracks
 11. Clean invalid links such as youtube links with playlists information in them
 12. Get the widget functionality working properly on mobile
-13. Etc
+13. ~~Add Volume slider (SOUNDCLOUD DOES NOT SUPPORT DESPITE DOCS SAYING OTHERWISE)~~
+14. Etc
