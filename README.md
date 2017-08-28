@@ -4,7 +4,6 @@ Ploosic is an app that allows a user to play music from youtube, soundcloud, ban
 
 Currently in a V1.0 state where a user can access a personal playlist that they can add songs via url from YouTube/SoundCloud and play those songs with your standard play/pause/previous/next functionality.
 
-[Demo Here (SOON)](https://ploosic.com)
 
 # ToDo
 
